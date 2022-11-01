@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Johnny Lin" />
+    <meta name="robots" content="index, follow" />
+   <title>基礎HTML</title>
+  </head>
+  <body>
+    <script>
+        //var是一個很麻煩的函數，他有global-scope、function-scope、
+        //但是沒有block-scope(for-loop, if statement)
+        
+        var x =1 ;
+        for(var x=0;x<10;x++){
+            console.log(x);
+            //在這邊for loop 會從0開始跳 0,1,2,3,...,9
+            //在跳到10的那一瞬間，x不符合for loop 的規則
+            //log在印到9就停止，但是此時此刻 x=10
+            //這是為什麼外面的x=10 
+        }
+        //JS生成階段 會先知道有個var 宣告一個變數叫做x
+        //再來會一行一行往下執行
+        //先執行for-loop，執行的結果印出x=0~9，x的最終值為10
+        //由於var "不擁有" Block scope特性(裡面執行的x會被外面的看見)
+        //這也是為什麼外面的x =10!!
+        console.log(`The outside x=`+x);
+
+        var greeting = "say Hi";
+        var greeting = "say Hello instead";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Johnny Lin" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Edit student data(<%=editstudata.name%>) </title>
+  </head>
+  <body>
+    <form action="/students/edit/<%=editstudata.id%>?_method=PUT" method="POST"> 
+        <!-- //這邊的action要注意兩件事:
+        >form tag的method只能放POST,GET兩種
+        >如果我們要送的REQUEST是PUT/PATCH的話
+        >我們必須再借助一個npm module叫做:
+        >G:的時候一定要打好完整的關鍵字 method override npm
+        >https://www.npmjs.com/package/method-override
+        >按照DOC的範例寫要在ROUTE後面加上 "?_method=PUT"記得等號後面要放入你要送的REQUEST形式
+        >action="/students/edit/<%=editstudata.id%>?_method=PUT"
+        >因為原則還是要送東西出去，method就維持post不變，我們只有在action啟用methodoverride! 
+
+
+        >>action裡面的ROUTE是為了要配合GET HANDLER, 
+        >>在redirect來這個編輯頁面的時候可以順利顯示這個id對應的相關資料!! -->
+      <label for="id">ID:</label>
+      <input type="number" id="id" name="id" value="<%=editstudata.id%>" required />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%=editstudata.name%>" required />
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" value="<%=editstudata.age%>" min=0 max=80  required/>
+      <label for="merit">Merit:</label>
+      <input type="number" id="merit" name="merit" value="<%=editstudata.scholarship.merit%>" max=5000  required/>
+      <label for="other">Other:</label>
+      <input type="number" id="other" name="other" value="<%=editstudata.scholarship.other%>"  required/>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

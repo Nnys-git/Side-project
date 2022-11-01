@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Johnny Lin" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/styles/style.css">
+    <title><%=studata.name%> </title>
+  </head>
+  <body>
+    <table>
+        <tr>
+            <td>Student ID</td>
+            <td><%=studata.id%> </td>
+        </tr>
+        <tr>
+            <td>Full name</td>
+            <td><%=studata.name%> </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><%=studata.age%> </td>
+        </tr>
+        <tr>
+            <td>Merit Scholarship</td>
+            <td><%=studata.scholarship.merit%> </td>
+        </tr>
+        <tr>
+            <td>Other Scholarship</td>
+            <td><%=studata.scholarship.other%> </td>
+        </tr>
+        <tr>
+            <td>Total Scholarship</td>
+            <td><%=studata.scholarship.merit + studata.scholarship.other%> </td>
+            <!-- 在<%  %>裡面可以直接相加，就跟JS環境相同-->
+        </tr>
+    </table>
+    <a href="/students/edit/<%=studata.id%>">更新/修改學生資料</a>
+    <a href="/students/delete/<%=studata.id%>">刪除學生資料</a>
+    <a href="/students">Go back to student list</a>    
+  </body>
+</html>
