@@ -1,0 +1,147 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		<html>
+
+		<head>
+			<title>I-cart商品編輯系統</title>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+				integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+				crossorigin="anonymous">
+			<style>
+				body {
+					background-image: linear-gradient(-45deg, #ffffff96 0%, #3eb8ffbd 100%);
+				}
+
+				img {
+					height: 100px;
+					width: 100px;
+				}
+
+				.btn button {
+					border-style: none;
+					margin: 10px;
+					font-size: medium;
+					font-weight: bolder;
+					border-radius: 5px;
+					background: #e3fdff;
+					box-shadow: 3px 3px 2px rgba(136, 136, 136, 0.829);
+				}
+
+				.btn button a { text-decoration: none;
+                    font-size: large;
+                    color: rgba(0, 0, 0, 0.863);
+				}
+
+				.btn button:hover {
+					border-radius: 5px;
+					background: #ffc375;
+					box-shadow: 0 0 10px #ffc375;
+				}
+
+				#list td {
+					border: 1px solid rgba(0, 0, 0, 0.432);
+					font-weight: 700;
+					font-size: large;
+				}
+
+				#list td:hover {
+					color: #2c53ffe7;
+				}
+
+				#tda {
+					/* border: 2px solid black; */
+					text-align: center;
+					/* 文字水平置中 */
+					vertical-align: middle;
+					/* 文字垂直置中 */
+					padding: auto;
+					margin: auto;
+				}
+
+				#tda a {
+					/* border: 2px solid black; */
+					text-decoration: none;
+					font-weight: 700;
+					padding: 10px;
+					font-size: large;
+					color: rgba(0, 0, 0, 0.863);
+				}
+
+				#tda a:hover {
+					color: #2c53ffe7;
+				}
+
+				#tdimg {
+					/* img被視為文字 */
+					text-align: center;
+					vertical-align: middle;
+				}
+			</style>
+			<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+			</script>
+		</head>
+
+		<body>
+			<!-- 中央圖表 -->
+			<div class="container-fluid">
+				<h1 class="title_font text-center">I-CART後臺管理系統</h1>
+				<h2 class="text-center">商品管理</h2>
+				<div class="row d-flex">
+					<div class="btn col-6 text-left">
+						<button>
+							<a href="<%=request.getContextPath()%>/new">新增商品</a>
+						</button>
+					</div>
+					<br>
+					<div class="col-12"></div>
+					<table class="table table-bordered">
+						<thead style="background:black;color:white">
+							<tr>
+								<th>name</th>
+								<th>type</th>
+								<th>price</th>
+								<th>intro</th>
+								<th>weight</th>
+								<th>gender</th>
+								<th>Photo</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--   for (Todo todo: todos) {  -->
+							<c:forEach var="product" items="${listProducts}">
+
+								<tr id="list">
+									<td>
+										<c:out value="${product.name}" />
+									</td>
+									<td>
+										<c:out value="${product.type}" />
+									</td>
+									<td>
+										<c:out value="${product.price}" />
+									</td>
+									<td>
+										<c:out value="${product.intro}" />
+									</td>
+									<td>
+										<c:out value="${product.weight}" />
+									</td>
+									<td>
+										<c:out value="${product.gender}" />
+									</td>
+									<td id="tdimg"><img src="data:;base64,<c:out value=" ${product.picBase64}" />"/>
+									</td>
+									<td id="tda"><a href="edit?name=<c:out value='${product.name}' />">Edit</a>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="delete?name=<c:out value='${product.name}' />">Delete</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</body>
+
+		</html>

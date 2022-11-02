@@ -1,0 +1,105 @@
+.rec_container {
+    /* border:2px solid rgb(255, 0, 0); */
+    position:relative;
+    top:-580px;
+    left:830px;
+    padding: 0px;
+    margin: 0px;
+    width: 200px;
+    height: 600px;
+    border-left:2px solid rgba(107, 107, 228, 0.658);
+}
+.prod_name {
+    /* border: 2px dashed darkgray; */
+    font-size:18px;
+    text-align: center;
+    margin:0px;
+    /* border-bottom:2px solid rgba(107, 107, 228, 0.658); */
+}
+.rec_title {
+    margin:0px;
+}
+.transition{
+    transition: 0.4s;
+}
+#keyprod {
+/* border: 2px dashed darkgoldenrod;  */
+padding-top:7px;
+margin:auto;
+justify-content: center; 
+display: flex;
+}
+#rec_bump {
+    position: fixed;
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    border: 2px solid royalblue;
+    opacity: 0;
+    width: 800px; 
+    height: 521px; 
+    left: 10px; 
+    top: 60px;
+ 
+}
+.rec_bar_45 {
+    position: fixed;
+    /* border: 2px dashed rgb(181, 222, 135); */
+    width: 36px;
+    height: 6px;
+    background: #666;
+    margin: 6px 0px;
+    border-radius: 2px;
+    left:750px;
+    top:555px;
+    transform: rotate(45deg) translate(5px, -15px);
+   
+}
+
+.rec_bar_135 {
+    position: fixed;
+    /* border: 2px dashed rgb(181, 222, 135); */
+    width: 36px;
+    height: 6px;
+    background: #666;
+    margin: 6px 0px;
+    border-radius: 2px;
+    left:750px;
+    top:554px;
+    transform: rotate(-45deg) translate(14px, 5px);
+   
+}
+
+.prod_img_big{
+    position: fixed;
+    /* border: 2px dashed rgb(135, 205, 222); */
+    width: 300px;
+    height: 300px;
+    left:45px;
+    margin: 0px;  
+    top:155px;  
+    z-index: -1;
+}
+
+.prod_info{
+    /* border: 2px dashed lightgray; */
+    position: relative;
+    display:block;
+    top:75px;
+    left:350px;
+    width:440px;
+    height:50px ;
+    margin-bottom:20px;
+}
+
+#rec_bump h1 {
+    /* border :2px solid red; */
+    position: absolute;
+    top:16px;
+}
+
+.rec_font{
+    color:white;
+    font-size: small;
+    
+}
+
+
