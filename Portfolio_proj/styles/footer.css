@@ -1,0 +1,40 @@
+footer {
+  background-color: #d9d9d9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+footer section.footer_contact p {
+  text-align: center;
+  font-size: 1.5rem;
+}
+footer section.footer_svg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 35vw;
+}
+footer section.footer_svg svg {
+  width: 3rem;
+}
+footer section.backButton a svg {
+  position: fixed;
+  right: 2rem;
+  bottom: -2rem;
+  width: 4rem;
+  -webkit-filter: drop-shadow(3px 1px 2px rgb(153, 153, 153));
+          filter: drop-shadow(3px 1px 2px rgb(153, 153, 153));
+}/*# sourceMappingURL=footer.css.map */

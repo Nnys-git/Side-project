@@ -1,12 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
 const mongoose = require("mongoose");
-const fs = require("fs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
-const { stringify } = require("querystring");
 const User = require("./models/user"); //記得是要放路徑，最後副檔名不需要!
 const bcrypt = require("bcrypt");
 const saltRounds = 10; //2^10=1024次去做hash function
@@ -24,14 +21,14 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //用niddle確認是否已經登入!
-const requireLogin = (req,res,next)=>{
-  if(!req.session.isVarified==true){ //如果沒登入
+const requireLogin = (req, res, next) => {
+  if (!req.session.isVarified == true) {
+    //如果沒登入
     res.redirect("login"); //重導向login頁面
   } else {
     next();
   }
 };
-
 
 //connect to localhost mongoDB
 mongoose
@@ -61,16 +58,17 @@ app.post("/login", async (req, res, next) => {
     let foundUser = await User.findOne({ username }); //記得這邊用findOne，用find回傳整個array麻煩
     if (foundUser) {
       bcrypt.compare(password, foundUser.password, (err, result) => {
-        if (result === true) { //找到資料庫有這個人，密碼比對也相同
-          req.session.isVarified=true;//確認登入後就在session存入isVarified property = true;
-          res.redirect("secret");//這邊的redirect代表導向另一個route!
+        if (result === true) {
+          //找到資料庫有這個人，密碼比對也相同
+          req.session.isVarified = true; //確認登入後就在session存入isVarified property = true;
+          res.redirect("secret"); //這邊的redirect代表導向另一個route!
         } else {
           res.send("Password or Username not correct!");
-        };
+        }
 
         if (err) {
           next(err);
-        };
+        }
       });
     } else {
       res.send("Password or Username not correct!");
@@ -81,10 +79,10 @@ app.post("/login", async (req, res, next) => {
 });
 
 //所以我們還要針對secret這個route做handle
-app.get("/secret",requireLogin,(req,res)=>{ //最後在登入後頁面加上middleware, 確保進到這個網站的人都是有登入過的!
+app.get("/secret", requireLogin, (req, res) => {
+  //最後在登入後頁面加上middleware, 確保進到這個網站的人都是有登入過的!
   res.render("secret");
-})
-
+});
 
 app.get("/signup", (req, res) => {
   res.render("signup");
@@ -95,7 +93,8 @@ app.post("/signup", async (req, res, next) => {
   console.log(req.body);
   let { username, password } = req.body;
   //排除同樣名稱被重複進入資料庫的狀況
-  try {//先檢查DB內有沒有一樣的NAME(只檢查NAME的原因在於，資料庫有同樣的密碼其實沒關係，但同樣名稱就不行了)
+  try {
+    //先檢查DB內有沒有一樣的NAME(只檢查NAME的原因在於，資料庫有同樣的密碼其實沒關係，但同樣名稱就不行了)
     let foundUser = await User.findOne({ username });
     if (foundUser) {
       res.send("Username has been saved.");
