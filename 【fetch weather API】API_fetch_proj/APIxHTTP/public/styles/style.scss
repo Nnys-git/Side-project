@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: papayawhip;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+table,tr,td{
+    font-size: 1.25rem;
+    border-collapse: collapse;
+    border:1px solid black;
+    padding:0.25rem 0.5rem;
+}

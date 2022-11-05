@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Johnny Lin" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/styles/style.css">
+    <title><%=djs.name%> (<%=djs.sys.country%>)</title>
+    <!-- 這邊的djs.name、djs.sys.country通通都是包在object裡面，所以可以直接用dot notation去抓value -->
+  </head>
+  <body>
+    <h1> <%=djs.name%> Weather now</h1>
+    <table>
+      <tr>
+        <td>Main Weather</td>
+        <td><%=djs.weather[0].main %> </td>
+        <!-- 但是這邊的djs.weather.main就不一樣了，weather是一個array，不是一個object，不能直接dot -->
+        <!-- 所以我們用weather[0]第一個index -->
+      </tr>
+      <tr>
+        <td>Main Description</td>
+        <td><%=djs.weather[0].description %> </td>
+      </tr>
+      <tr>
+        <td>Main Temperature</td>
+        <td><%=tempC %> </td>
+      </tr>
+    </table>
+    
+    <%=  %> 
+  </body> 
+</html>
